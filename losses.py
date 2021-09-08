@@ -3,22 +3,22 @@ import tensorflow.keras.backend as K
 from tensorflow.keras.losses import Loss
 import tensorflow as tf
 
-def get_relative_margins(y_true, y_pred):
-    # Output: the matrix 
-    #     z_pred = A - B - C 
-    # such that
-    #     1. z_pred.shape == y_pred.shape
-    #     2. z_pred[i,:] == y_pred[i,:] * rho[y_true[i]].T
-    #         where rho[j] is the j-th involution code
+def get_relative_margins(y, z):
+    # Output: 
+    #     a tensor with shape (_, n_class - 1) whose i-th row is
+    #     z[i,:]*rho[y[i]]^T 
+    #         where rho[y] is the y-th involution code
     # Inputs: 
-    #     y_true = to_category(y_true_raw)[:,:-1]
+    #     y is a (_, n_classes - 1) tensor.
+    #           must be a trimmed categorical vector, 
+    #           i.e., y should be the output of tf_multiclass.utils.to_t_categorical(y_raw)
+    #           y_raw here refers to the labels that takes values in {0, 1,..., n_classes}
+    #           the raw labels are then transformed to one-hot representation and the last entry is dropped
     #
-    # y_true_raw here refers to the labels that takes values in {0, 1,..., n_classes}
-    # the raw labels are then transformed to one-hot representation and the last entry is dropped
-    # 
-    #     y_pred = real-valued output of a model whose final layer has n_classes units
-    A = y_pred
-    C = y_pred*y_true
+    #     z is a (_, n_classes - 1) tensor
+    #           should be the real-valued output of a model whose final layer has n_classes units
+    A = z
+    C = z*y
     B = K.expand_dims(K.sum(C,axis=1),axis=1)
     return A - B - C
 

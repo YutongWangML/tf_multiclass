@@ -1,13 +1,14 @@
 from .utils import to_t_categorical, from_t_categorical, predict_classes_from_r_margin
-import keras.backend as K
+import tensorflow.keras.backend as K
 
 
 # Note, this is a hacky to get the class keras.metrics.MeanMetricWrapper
 # In TF version 2.6, MeanMetricWrapper is exported and one can directly use
 # from keras.metrics import MeanMetricWrapper
-from keras.metrics import Accuracy
+from tensorflow.keras.metrics import Accuracy
 MeanMetricWrapper = Accuracy.__base__ 
-
+del Accuracy
+# from tf.keras.metrics import MeanMetricWrapper
 
 
 
