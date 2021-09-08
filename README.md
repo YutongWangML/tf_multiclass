@@ -1,6 +1,8 @@
-# `tf_multiclass` - multiclass hinge losses for TensorFlow
+# TF Multiclass
 
-Tested with TensorFlow version 2.4.1.
+Multiclass hinge losses for TensorFlow.
+
+Tested with TensorFlow 2.4.1 and 2.5.0.
 
 This package implements the following losses in the permutation-equivariant relative-margin (PERM) loss framework (more on this at the very end):
 
@@ -9,7 +11,6 @@ This package implements the following losses in the permutation-equivariant rela
 3. Duchi-Ruan-Khosravi hinge. Referred to as the [family-wise loss](https://projecteuclid.org/journals/annals-of-statistics/volume-46/issue-6B/Multiclass-classification-information-divergence-and-surrogate-risk/10.1214/17-AOS1657.full)
 and the [adversarial zero-one loss](https://proceedings.neurips.cc/paper/2016/hash/ad13a2a07ca4b7642959dc0c4c740ab6-Abstract.html).
 4. Cross entropy.
-
 
 
 ## How to use
