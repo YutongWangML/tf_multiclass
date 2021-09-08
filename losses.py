@@ -1,6 +1,6 @@
 from tensorflow.python.keras.utils import losses_utils
-import keras.backend as K
-from keras.losses import Loss
+import tensorflow.keras.backend as K
+from tensorflow.keras.losses import Loss
 import tensorflow as tf
 
 def get_relative_margins(y_true, y_pred):

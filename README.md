@@ -1,5 +1,7 @@
 # `tf_multiclass` - multiclass hinge losses for TensorFlow
 
+Tested with TensorFlow version 2.4.1.
+
 This package implements the following losses in the permutation-equivariant relative-margin loss framework:
 
 1. Weston-Watkins hinge. [Reference](https://www.jmlr.org/papers/v17/11-229.html).
